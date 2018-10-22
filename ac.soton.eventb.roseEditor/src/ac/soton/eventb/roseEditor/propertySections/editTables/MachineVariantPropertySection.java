@@ -41,40 +41,42 @@ public class MachineVariantPropertySection extends AbstractTablePropertySection 
 
 	@Override
 	protected String getTableLabel(){
-		return "Variant:";
+		return "Variants:";
 	}
 
 	@Override
 	protected EAttribute getFeatureForCol(final int col) {
 		switch (col) {
-		case 0 : return CorePackage.eINSTANCE.getEventBExpression_Expression();
-		case 1 : return CorePackage.eINSTANCE.getEventBCommented_Comment();
+		case 0 : return CorePackage.Literals.EVENT_BNAMED__NAME;
+		case 1 : return CorePackage.eINSTANCE.getEventBExpression_Expression();
+		case 2 : return CorePackage.eINSTANCE.getEventBCommented_Comment();
 		default : return null;
 		}
 	}
 
 	@Override
 	protected EReference getFeature() {
-		return MachinePackage.eINSTANCE.getMachine_Variant();
+		return MachinePackage.eINSTANCE.getMachine_Variants();
 	}
 
 	@Override
 	protected int columnWidth(final int col){
 		switch (col) {
-		case 0 : return 400;	//expression field
-		case 1 : return 400;	//comment field
+		case 0 : return 100;	//name
+		case 1 : return 400;	//expression field
+		case 2 : return 400;	//comment field
 		default : return -1;	//unknown
 		}
 	}
 
 	@Override
 	protected boolean isRodinKeyboard(final int col){
-		return col==0;
+		return col==1;
 	}
 
 	@Override
 	protected boolean isMulti(final int col){
-		return true;
+		return col > 0;
 	}
 
 }
