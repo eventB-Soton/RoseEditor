@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.roseEditor.feature"
       label="%featureName"
-      version="1.6.2.qualifier"
+      version="1.7.0.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.iumlb.branding"
       license-feature="org.rodinp.license"
@@ -30,9 +30,9 @@
       <import plugin="org.rodinp.core" version="1.7.0" match="compatible"/>
       <import plugin="org.rodinp.keyboard.ui" version="2.0.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="5.0.0" match="compatible"/>
-      <import plugin="org.eventb.emf.core.edit" version="1.0.0" match="compatible"/>
       <import plugin="org.eventb.emf.persistence" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore.change" version="2.10.0" match="compatible"/>
+      <import plugin="org.eventb.emf.core.edit" version="2.0.0" match="compatible"/>
    </requires>
 
    <plugin

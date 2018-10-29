@@ -1341,6 +1341,7 @@ public class RoseEditor extends MultiPageEditorPart implements IEditingDomainPro
 	 * 
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
