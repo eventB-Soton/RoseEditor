@@ -648,7 +648,7 @@ private final Listener tableMouseListener = new Listener() {
 			}
 			text = new Text(table, style);
 			//eventBListener
-			if (!isRodinKeyboard(column)){
+			if (isRodinKeyboard(column)){
 				text.addModifyListener(rodinKbdListener);
 			}
 			text.setFont(font);
