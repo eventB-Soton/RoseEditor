@@ -1257,7 +1257,7 @@ public class RoseEditor extends MultiPageEditorPart implements IEditingDomainPro
 				advancedViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 
 				advancedViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-				advancedViewer.setInput(input);
+				advancedViewer.setInput(editingDomain.getResourceSet());  //was input.. resource might be better
 				advancedViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 				viewerPane.setTitle(getProjectName(resource));
 
@@ -1495,12 +1495,13 @@ public class RoseEditor extends MultiPageEditorPart implements IEditingDomainPro
 				//
 				this.setPartName(filename);
 				this.setContentDescription("Rodin Project: " + getProject(resource).getName());
+				ArrayList<Object> selectionList = new ArrayList<Object>();
+				selectionList.add(selectedElement);
+				while (selectedElements.hasNext()) {
+					selectionList.add(selectedElements.next());
+				}
+				
 				if (currentViewerPane.getViewer() == selectionViewer) {
-					ArrayList<Object> selectionList = new ArrayList<Object>();
-					selectionList.add(selectedElement);
-					while (selectedElements.hasNext()) {
-						selectionList.add(selectedElements.next());
-					}
 
 					// Set the selection to the containing resource of the widget.
 					//
@@ -1532,12 +1533,13 @@ public class RoseEditor extends MultiPageEditorPart implements IEditingDomainPro
 					currentViewerPane.setTitle(input);
 					eventRefinementViewer.setInput(input);
 
-				} else {
+				} else  {
 					// Set the input to the widget.
 					//
 					if (currentViewerPane.getViewer().getInput() != selectedElement) {
-						currentViewerPane.getViewer().setInput(selectedElement);
-						currentViewerPane.setTitle(selectedElement);
+						//currentViewerPane.getViewer().setInput(selectedElement);
+						//currentViewerPane.setTitle(selectedElement);
+						currentViewerPane.getViewer().setSelection(new StructuredSelection(selectionList));
 					}
 				}
 			}
