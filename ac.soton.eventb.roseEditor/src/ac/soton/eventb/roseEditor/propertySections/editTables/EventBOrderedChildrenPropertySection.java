@@ -47,6 +47,7 @@ import ac.soton.eventb.roseEditor.propertySections.abstracts.AbstractTableProper
  *
  *
  * @author Colin Snook
+ * @since 1.8
  */
 
 public class EventBOrderedChildrenPropertySection extends AbstractTablePropertySection implements IFilter {
