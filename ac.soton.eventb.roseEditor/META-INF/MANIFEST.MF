@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="[2.4.0,3.0.0)",
  org.rodinp.core;bundle-version="[1.7.0,2.0.0)",
  org.rodinp.keyboard.ui;bundle-version="[2.0.0,3.0.0)",
  org.eventb.emf.core;bundle-version="[6.0.0,7.0.0)",
- org.eventb.emf.core.edit;bundle-version="[3.0.0,4.0.0)",
+ org.eventb.emf.core.edit;bundle-version="[2.1.0,3.0.0)",
  org.eventb.emf.persistence;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.emf.ecore.change;bundle-version="[2.10.0,3.0.0)"
 Bundle-ActivationPolicy: lazy
