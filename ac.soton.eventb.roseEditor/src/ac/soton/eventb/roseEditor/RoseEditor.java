@@ -1,9 +1,16 @@
-/**
- * <copyright>
- * </copyright>
+/*******************************************************************************
+ * Copyright (c) 2011, 2021 University of Southampton.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton - initial API and implementation
+ *******************************************************************************/
 package ac.soton.eventb.roseEditor;
 
 import java.io.IOException;
@@ -1250,7 +1257,7 @@ public class RoseEditor extends MultiPageEditorPart implements IEditingDomainPro
 				advancedViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 
 				advancedViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-				advancedViewer.setInput(input);
+				advancedViewer.setInput(editingDomain.getResourceSet());  //was input.. resource might be better
 				advancedViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 				viewerPane.setTitle(getProjectName(resource));
 
@@ -1488,12 +1495,13 @@ public class RoseEditor extends MultiPageEditorPart implements IEditingDomainPro
 				//
 				this.setPartName(filename);
 				this.setContentDescription("Rodin Project: " + getProject(resource).getName());
+				ArrayList<Object> selectionList = new ArrayList<Object>();
+				selectionList.add(selectedElement);
+				while (selectedElements.hasNext()) {
+					selectionList.add(selectedElements.next());
+				}
+				
 				if (currentViewerPane.getViewer() == selectionViewer) {
-					ArrayList<Object> selectionList = new ArrayList<Object>();
-					selectionList.add(selectedElement);
-					while (selectedElements.hasNext()) {
-						selectionList.add(selectedElements.next());
-					}
 
 					// Set the selection to the containing resource of the widget.
 					//
@@ -1525,12 +1533,13 @@ public class RoseEditor extends MultiPageEditorPart implements IEditingDomainPro
 					currentViewerPane.setTitle(input);
 					eventRefinementViewer.setInput(input);
 
-				} else {
+				} else  {
 					// Set the input to the widget.
 					//
 					if (currentViewerPane.getViewer().getInput() != selectedElement) {
-						currentViewerPane.getViewer().setInput(selectedElement);
-						currentViewerPane.setTitle(selectedElement);
+						//currentViewerPane.getViewer().setInput(selectedElement);
+						//currentViewerPane.setTitle(selectedElement);
+						currentViewerPane.getViewer().setSelection(new StructuredSelection(selectionList));
 					}
 				}
 			}

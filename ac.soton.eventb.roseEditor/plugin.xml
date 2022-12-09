@@ -2,11 +2,18 @@
 <?eclipse version="3.0"?>
 
 <!--
- <copyright>
- </copyright>
-
- $Id$
--->
+    Copyright (c) 2011, 2021 University of Southampton.
+   
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+   
+    SPDX-License-Identifier: EPL-2.0
+   
+    Contributors:
+       University of Southampton - initial API and implementation
+ -->
 
 <plugin>
 
@@ -42,7 +49,7 @@
    </extension>
    
 <!-- Property tabs -->   
-         <!--"ac.soton.umlb.umlbMetamodel.commonDiagramUtilities.UMLBPropertiesView"-->
+
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs contributorId="ac.soton.eventb.roseEditor.editorID">
@@ -111,12 +118,19 @@
                	label="%tab.Axioms"
                	afterTab="context.tab.axioms"
                	/> 
-               	                              
+ 
+          <propertyTab
+               	category="domain"
+                id="domain.tab.orderedChildren"
+                label="%tab.OrderedChildren"
+                afterTab="context.tab.axioms"
+                />
+                              	                              
          <propertyTab
                	category="domain"
                 id="domain.tab.advanced"
                 label="%tab.Advanced"
-                afterTab="event.tab.actions"
+                afterTab="domain.tab.orderedChildren"
                 />
                
       </propertyTabs>
@@ -299,7 +313,14 @@
                class="ac.soton.eventb.roseEditor.propertySections.editTables.ContextAxiomsPropertySection"
                filter="ac.soton.eventb.roseEditor.propertySections.editTables.ContextAxiomsPropertySection">
          </propertySection>
-         
+ 
+          <propertySection
+               id="domain.section.orderedChildren"
+               tab="domain.tab.orderedChildren"
+               class="ac.soton.eventb.roseEditor.propertySections.editTables.EventBOrderedChildrenPropertySection"
+               filter="ac.soton.eventb.roseEditor.propertySections.editTables.EventBOrderedChildrenPropertySection">
+         </propertySection>
+                 
          <propertySection
                id="domain.section.advanced"
                tab="domain.tab.advanced"
