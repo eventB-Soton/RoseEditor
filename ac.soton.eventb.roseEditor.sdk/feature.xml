@@ -37,8 +37,18 @@
          id="ac.soton.eventb.roseEditor.feature"
          version="0.0.0"/>
 
-   <includes
-         id="ac.soton.eventb.roseEditor.source.feature"
-         version="0.0.0"/>
+   <plugin
+         id="ac.soton.eventb.roseEditor.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.roseEditor.branding.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
