@@ -15,10 +15,10 @@
 <feature
       id="ac.soton.eventb.roseEditor.sdk"
       label="%featureName"
-      version="1.8.0.qualifier"
+      version="1.8.0.release"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.roseEditor.branding"
-      license-feature="org.rodinp.license"
+      license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
 
    <description>
@@ -37,8 +37,18 @@
          id="ac.soton.eventb.roseEditor.feature"
          version="0.0.0"/>
 
-   <includes
-         id="ac.soton.eventb.roseEditor.source.feature"
-         version="0.0.0"/>
+   <plugin
+         id="ac.soton.eventb.roseEditor.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.roseEditor.branding.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

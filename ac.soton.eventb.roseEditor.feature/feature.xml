@@ -15,10 +15,10 @@
 <feature
       id="ac.soton.eventb.roseEditor.feature"
       label="%featureName"
-      version="1.8.0.qualifier"
+      version="1.8.0.release"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.roseEditor.branding"
-      license-feature="org.rodinp.license"
+      license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
 
    <description>
@@ -42,10 +42,10 @@
       <import plugin="org.eclipse.core.resources" version="3.8.1" match="compatible"/>
       <import plugin="org.rodinp.core" version="1.7.0" match="compatible"/>
       <import plugin="org.rodinp.keyboard.ui" version="2.0.0" match="compatible"/>
-      <import plugin="org.eventb.emf.persistence" version="3.0.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.ecore.change" version="2.10.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="6.0.0" match="compatible"/>
       <import plugin="org.eventb.emf.core.edit" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.change" version="2.10.0" match="compatible"/>
+      <import plugin="org.eventb.emf.persistence" version="4.0.0" match="compatible"/>
    </requires>
 
    <plugin

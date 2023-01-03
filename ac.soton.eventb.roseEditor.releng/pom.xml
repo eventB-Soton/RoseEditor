@@ -1,0 +1,196 @@
+<!--
+    Copyright (c) 2020, 2022 University of Southampton.
+   
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+   
+    SPDX-License-Identifier: EPL-2.0
+   
+    Contributors:
+       University of Southampton - initial API and implementation
+ -->
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>ac.soton.eventb.roseEditor</groupId>
+  <!-- ID of this artifact -->
+  <artifactId>releng</artifactId>
+  <!-- REQUIRED: Version number (using semantic versioning) -->
+  <version>1.8.0.release</version>
+  <packaging>pom</packaging>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Plug-in versions -->
+    <tycho-version>2.7.5</tycho-version>
+    <maven-resources-plugin-version>3.3.0</maven-resources-plugin-version>
+    <!-- URL for Eclipse Updates repository -->
+    <eclipse_updates-repo.url>https://download.eclipse.org/eclipse/updates/4.22/</eclipse_updates-repo.url>
+    <!-- URL for Eclipse Releases repository (2022-06) -->
+    <eclipse_releases-repo.url>https://download.eclipse.org/releases/2022-06</eclipse_releases-repo.url>
+    <!-- URL for Rodin Platform -->
+    <rodin-repo.url>https://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
+    <!-- OPTIONAL Additional URLs -->
+    <!-- URL for the Soton Releases Update site -->
+    <soton-repo.url>https://eventb-soton.github.io/updateSite/releases</soton-repo.url>
+    <!-- URL for the Rodin Licence Update site -->
+    <rodin_licence-repo.url>https://eventb-soton.github.io/media_bin/org.rodinp.licence.updateSite</rodin_licence-repo.url>
+  </properties>
+
+  <repositories>
+    <!-- Eclipse Updates repository -->
+    <repository>
+      <id>eclipse_updates-repo</id>
+      <url>${eclipse_updates-repo.url}</url>
+      <layout>p2</layout>
+    </repository>
+    <!-- Eclipse Releases repository -->
+    <repository>
+      <id>eclipse_releases-repo</id>
+      <url>${eclipse_releases-repo.url}</url>
+      <layout>p2</layout>
+    </repository>
+    <!-- Rodin Platform repository -->
+    <repository>
+      <id>rodin-platform</id>
+      <url>${rodin-repo.url}</url>
+      <layout>p2</layout>
+    </repository>
+    <!-- OPTIONAL Additional repository -->
+    <!-- Soton Prototype repository -->
+    <repository>
+      <id>soton</id>
+      <url>${soton-repo.url}</url>
+      <layout>p2</layout>
+    </repository>
+    <!-- Rodin Licence repository -->
+    <repository>
+      <id>rodin-licence</id>
+      <url>${rodin_licence-repo.url}</url>
+      <layout>p2</layout>
+    </repository>
+  </repositories>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+	<plugin>
+	  <!-- Define the version of the tycho-versions plugin -->
+	  <groupId>org.eclipse.tycho</groupId>
+	  <artifactId>tycho-versions-plugin</artifactId>
+	  <version>${tycho-version}</version>
+	</plugin>
+	<plugin>
+	  <groupId>org.eclipse.tycho</groupId>
+	  <artifactId>tycho-packaging-plugin</artifactId>
+	  <version>${tycho-version}</version>
+	  <configuration>
+	    <format>yyyyMMddHHmm</format>
+	  </configuration>
+	</plugin>
+	<plugin>
+	  <groupId>org.eclipse.tycho</groupId>
+	  <artifactId>tycho-surefire-plugin</artifactId>
+	  <version>${tycho-version}</version>
+	</plugin>
+	<plugin>
+	  <groupId>org.eclipse.tycho.extras</groupId>
+	  <artifactId>tycho-source-feature-plugin</artifactId>
+	  <version>${tycho-version}</version>
+	</plugin>
+	<plugin>
+	  <groupId>org.eclipse.tycho</groupId>
+	  <artifactId>tycho-p2-plugin</artifactId>
+	  <version>${tycho-version}</version>
+	</plugin>
+	<plugin>
+	  <groupId>org.eclipse.tycho</groupId>
+	  <artifactId>tycho-p2-repository-plugin</artifactId>
+	  <version>${tycho-version}</version>
+	</plugin>
+	<plugin>
+	  <groupId>org.eclipse.tycho</groupId>
+	  <artifactId>tycho-p2-director-plugin</artifactId>
+	  <version>${tycho-version}</version>
+	</plugin>
+	<plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-antrun-plugin</artifactId>
+	  <version>1.7</version>
+	</plugin>
+	<!-- Deactivate the Maven resource plug-in -->
+	<plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-resources-plugin</artifactId>
+	  <version>${maven-resources-plugin-version}</version>
+	  <executions>
+	    <execution>
+	      <id>default-resources</id>
+	      <phase/>
+	    </execution>
+	    <execution>
+	      <id>default-testResources</id>
+	      <phase/>
+	    </execution>
+	  </executions>
+	</plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <!-- enable tycho build extension -->
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-maven-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<extensions>true</extensions>
+      </plugin>
+      <!-- enable source bundle creation for plugin and features -->
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-source-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<executions>
+	  <execution>
+	    <id>plugin-source</id>
+	    <phase>prepare-package</phase>
+	    <goals>
+	      <goal>plugin-source</goal>
+	    </goals>
+	  </execution>
+	</executions>
+      </plugin>
+      <!-- Use the tycho-versions plugin goals -->
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-versions-plugin</artifactId>
+	<version>${tycho-version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <environments>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+          </environments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
