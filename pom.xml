@@ -1,0 +1,31 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>ac.soton.eventb.roseEditor</groupId>
+  <!-- Name of this artifact -->
+  <artifactId>root</artifactId>
+  <!-- REQUIRED: Name and description of this this root build -->
+  <name>Rose Editor Root POM</name>
+  <description>Root artifact for the Rose Editor</description>
+  <!-- REQUIRED: Version number (using semantic versioning) -->
+  <version>1.8.0.release</version>
+  <packaging>pom</packaging>
+  <parent>
+    <!-- REQUIRED: Group ID is the feature ID -->
+    <groupId>ac.soton.eventb.roseEditor</groupId>
+    <!-- Name of the release engineering artifact -->
+    <artifactId>releng</artifactId>
+    <!-- REQUIRED: Version number of the release engineering artifact -->
+    <version>1.8.0.release</version>
+    <!-- REQUIRED: Relative path to the release engineering artifact -->
+    <relativePath>./ac.soton.eventb.roseEditor.releng</relativePath>
+  </parent>
+
+  <modules>
+    <!-- LATER: List of modules in this build -->
+    <module>ac.soton.eventb.roseEditor</module>
+    <module>ac.soton.eventb.roseEditor.branding</module>
+    <module>ac.soton.eventb.roseEditor.feature</module>
+    <module>ac.soton.eventb.roseEditor.sdk</module>
+  </modules>
+</project>
